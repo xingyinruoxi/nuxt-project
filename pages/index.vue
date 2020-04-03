@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>这是首页！！！</h2>
+    <h2>这是首页！！！page</h2>
     {{num}}77
     <nav>
       <nuxt-link v-for="item in list" :to="`detail/${item.id}`" :key="item.id">{{item.name}}&nbsp;</nuxt-link>
