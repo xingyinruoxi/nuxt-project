@@ -1,28 +1,30 @@
 <template>
   <div>
     <h2>这是首页！！！page</h2>
-    {{num}}77
     <nav>
       <nuxt-link v-for="item in list" :to="`detail/${item.id}`" :key="item.id">{{item.name}}&nbsp;</nuxt-link>
     </nav>
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-export default class extends Vue {
-  num = 9;
-  list = [
-    {
-      id: 123,
-      name: "name1"
-    },
-    {
-      id: 222,
-      name: "name2"
-    }
-  ];
-}
+<script>
+export default {
+  name: "index",
+  data() {
+    return {
+      list: [
+        {
+          id: 123,
+          name: "name1"
+        },
+        {
+          id: 222,
+          name: "name2"
+        }
+      ]
+    };
+  }
+};
 </script>
 
 <style>

@@ -3,6 +3,7 @@
 </template>
 <script>
 export default {
+  middleware: ["auth"],
   head: {
     title: "管理页面",
     meta: [

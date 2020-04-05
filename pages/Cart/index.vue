@@ -1,6 +1,14 @@
 <template>
   <article>
     <h4>商品列表</h4>
+    <ul>
+      <li v-for="good in goods" :key="good.id">
+        <nuxt-link :to="`/detail/${good.id}`">
+          <span>{{good.text}}</span>
+          <span>￥{{good.price}}</span>
+        </nuxt-link>
+      </li>
+    </ul>
   </article>
 </template>
 <script>

@@ -1,21 +1,13 @@
 export default {
     mode: "universal",
-    /*  router: {
-                        extendRoues(routes, resolve) {
-                            routes.push({
-                                path: "/foo",
-                                component: resolve(__dirname, "pages/othername.vue")
-                                    // component: resolve(__dirname, "pages/othername.vue")
-                            });
-                        }
-                    }, */
     router: {
         extendRoutes(routes, resolve) {
             routes.push({
                 path: "/foo",
-                component: resolve(__dirname, "pages/othername.vue")
+                component: resolve(__dirname, "pages/othername.vue"),
             });
-        }
+        },
+        // middleware: ["auth"],
     },
     /*
      ** Headers of the page
@@ -28,10 +20,10 @@ export default {
             {
                 hid: "description",
                 name: "description",
-                content: process.env.npm_package_description || ""
-            }
+                content: process.env.npm_package_description || "",
+            },
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
     /*
      ** Customize the progress-bar color
@@ -40,11 +32,15 @@ export default {
     /*
      ** Global CSS
      */
-    css: [],
+    css: ["element-ui/lib/theme-chalk/index.css"],
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [],
+    plugins: [
+        "@/plugins/element-ui",
+        "@/plugins/api-inject",
+        "@/plugins/interceptor",
+    ],
     /*
      ** Nuxt.js dev-modules
      */
@@ -54,22 +50,23 @@ export default {
      */
     modules: [
         // Doc: https://bootstrap-vue.js.org
-        "bootstrap-vue/nuxt",
-        "@nuxtjs/axios"
+        "@nuxtjs/axios",
+        "cookie-universal-nuxt",
     ],
     axios: {
-        proxy: true
+        proxy: true,
     },
     proxy: {
-        "/api": "http://localhost:8080"
+        "/api": "http://localhost:8080",
     },
     /*
      ** Build configuration
      */
     build: {
+        transpile: [/^element-ui/],
         /*
          ** You can extend webpack config here
          */
-        extend(config, ctx) {}
-    }
+        extend(config, ctx) {},
+    },
 };
